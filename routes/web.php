@@ -17,33 +17,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+
+    $product = Product::all();
+    return view('index', [
+        'produits' => $product
+    ]);
 });
 
-//Route::get('/produits', [ProductController::class,'index']);
+Route::get('/produits', [ProductController::class,'index']);
 
-//Route::get('/produits/12-iphone-xs/{product}', [ProductController::class,'show']);
+Route::get('/produits/12-iphone-xs/{product}', [ProductController::class,'show']);
 
-//Route::get('/categorie/12-smartphone/{category}', [CategoryController::class, 'show']);
+Route::get('/categorie/12-smartphone/{category}', [CategoryController::class, 'show']);
 
-//Route::get('/contact', [ContactController::class,'index']);
+Route::get('/contact', [ContactController::class,'index']);
 
-Route::get('/produits', function () {
 
-    return view('produits.index');
-});
- Route::get ('/produits/12-iphone-xs/{id}', function ($product) {
-    $product = Product::find($product);
+ Route::get ('/produits/12-iphone-xs/{product}', function ($product) {
+    $product = Product::find($product); 
     return view ('produits.show', [
 
         'product' => $product
     ]);
  });
 
+ 
+
  Route::get('/categorie/12-smartphone/{category}', function ($category) {
+     
      $category = Category::find($category);
 
-    return view ('categorie.show');
+    return view ('categorie.show', [
+
+        'category' => $category
+    ]);
  });
 
  Route::get('/contact', function () {

@@ -29,5 +29,19 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'contact' => [ 
+        'name'  => env('NAME_COMPANY', 'FlexPhone'),
+        'mail'  => env('MAIL_FROM_ADDRESS'),
+        'phone' => env('PHONE_NUMBER', '+33 74 25 36 22 23'), 
+        'fax'   => env('FAXE_NUMBER', '+33 12 14 15 16'),
 
+    ], 
+
+    'Adresse' => [
+        'rue' => env('ADRESSE_RUE', '3 rue des Champs Elysées'),
+        'postacode' => env('POSTAL_CODE','75008'),
+        'city'      => env('ADRESSE_CITY', 'PARIS' ),
+        'country'   => env('ADRESSE_COUNTRY', 'France'),
+    ],
 ];
