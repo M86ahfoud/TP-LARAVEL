@@ -16,44 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
 
-    $product = Product::all();
+Route::get('/', function () {
+     
     return view('index', [
-        'produits' => $product
+        "produits" => Product::inRandomOrder()->limit(3)->get(),
+        "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->first(),
+        "parabol" => Product::latest()->limit(4)->get(),
     ]);
 });
 
 Route::get('/produits', [ProductController::class,'index']);
 
-Route::get('/produits/12-iphone-xs/{product}', [ProductController::class,'show']);
+Route::get('/produits/{product}-iphone-xs/', [ProductController::class,'show']);
 
-Route::get('/categorie/12-smartphone/{category}', [CategoryController::class, 'show']);
+Route::get('/categorie/{category}-smartphone/', [CategoryController::class, 'show']);
 
 Route::get('/contact', [ContactController::class,'index']);
 
 
- Route::get ('/produits/12-iphone-xs/{product}', function ($product) {
-    $product = Product::find($product); 
-    return view ('produits.show', [
-
-        'product' => $product
-    ]);
- });
-
  
-
- Route::get('/categorie/12-smartphone/{category}', function ($category) {
-     
-     $category = Category::find($category);
-
-    return view ('categorie.show', [
-
-        'category' => $category
-    ]);
- });
-
- Route::get('/contact', function () {
-
-    return view ('contact.index');
- });

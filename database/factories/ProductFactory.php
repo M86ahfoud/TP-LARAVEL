@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'prix' => rand(50,  100),
             'coup_de_coeur' => $this->faker->boolean($chanceOfGettingTrue = 50), 
             'image' => 'http://via.placeholder.com/640x360/',
-            'liste_couleurs' => 'null',
+            'liste_couleurs' => $this->faker->colorName(),
             'promotion' =>rand(10, 70),
             'dat_creation' => now(), 
             //

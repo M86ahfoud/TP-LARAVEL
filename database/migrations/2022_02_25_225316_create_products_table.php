@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->integer('coup_de_coeur')->nullable();
             $table->string('image')->nullable();
-            $table->json('liste_couleurs')->nullable();
+            $table->string('liste_couleurs')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->integer('promotion');
             $table->timestamp('dat_creation')->nullable();
