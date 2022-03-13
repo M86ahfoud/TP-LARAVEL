@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category; 
+
 class Product extends Model
 {
     use HasFactory;
@@ -14,15 +16,10 @@ class Product extends Model
         'image', 'promotion'
     ];
 
-    /**protected $casts =  [
+    
 
-        'liste_couleurs' => [
-
-            '1' => 'yellow',
-            '2' => 'red',
-            '3' =>  'brown',
-            '4' =>  'green',
-            '5' =>  'orange'
-        ],
-    ];*/
+    public function Category() 
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

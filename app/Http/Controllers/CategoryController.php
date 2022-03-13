@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,9 +14,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        return view('categories.index', [
-            'categories' => Category::latest()->paginate(8),
+        
+        return view('categorie.index', [
+            
+           
+            'categories' => Category::latest()->paginate(2),
         ]);
     }
 
@@ -26,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -48,7 +53,15 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        
+        return view('categorie.show', [
+
+            'category' => $category,
+            'categories' =>Category::inRandomOrder()->limit(5)->get(),
+            'categories' => Category::latest()->paginate(3)
+            
+        ]);
+     
     }
 
     /**

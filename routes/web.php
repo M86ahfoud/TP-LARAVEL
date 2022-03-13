@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::get('/', function () {
         "produits" => Product::inRandomOrder()->limit(3)->get(),
         "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->first(),
         "parabol" => Product::latest()->limit(4)->get(),
+        //"meilleur" => Review::inRandomOrder(4),
     ]);
 });
 
@@ -30,9 +32,11 @@ Route::get('/produits', [ProductController::class,'index']);
 
 Route::get('/produits/{product}-iphone-xs/', [ProductController::class,'show']);
 
-Route::get('/categorie/{category}-smartphone/', [CategoryController::class, 'show']);
+Route::get('/categorie', [CategoryController::class,'index']);
+
+Route::get('/categorie/{category}', [CategoryController::class, 'show']);
 
 Route::get('/contact', [ContactController::class,'index']);
 
 
- 
+

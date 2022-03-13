@@ -4,7 +4,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading"> Produit</h1>
-            <p class="lead text-muted mb-0">{{$products}}</p>
+            <p class="lead text-muted mb-0"></p>
         </div>
     </section>
     <div class="container">

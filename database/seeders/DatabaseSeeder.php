@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -17,24 +18,66 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+         //\App\Models\User::factory(10)->create();
 
-       $product =  \App\Models\Product::factory(30)->create();
+       $var =  \App\Models\Category::factory()->create([
 
-       
+            'name' => 'Sumaung'
+
+        ]);
 
 
-        DB::table('products')->insert ([
+        \App\Models\Product::factory(9)->create([
 
-                'nom' => Str::random(),
-                'description' => (bool) rand(0, 1) ,
-                'prix' => rand(25000, 150000),
-                'coup_de_coeur' => (bool) rand(0, 1) ,
-                'image' => 'https://dummyimage.com/photos/random?count=30',
-                'liste_couleurs' => 'null',
-                'promotion' => rand(10, 70),
-                'dat_creation' => now(),
-            ]);
+            'category_id' =>  $var->id 
+        ]);
+
+       $type =  \App\Models\Category::factory()->create([
+
+            'name' => 'Nokia'
+
+        ]);
+
+
+        \App\Models\Product::factory(4)->create([
+
+            'category_id' =>  $type->id 
+        ]);
         
+       $marque =  \App\Models\Category::factory()->create([
+
+            'name' => 'LG'
+
+        ]);
+
+
+        \App\Models\Product::factory(3)->create([
+
+            'category_id' =>  $marque->id 
+        ]);
+
+       $ruli=  \App\Models\Category::factory()->create([
+
+            'name' => 'Hwawi'
+
+        ]);
+
+
+        \App\Models\Product::factory(2)->create([
+
+            'category_id' =>  $ruli->id 
+        ]);
+
+       $model =  \App\Models\Category::factory()->create([
+
+            'name' => 'Solid'
+
+        ]);
+
+
+        \App\Models\Product::factory(5)->create([
+
+            'category_id' =>  $model ->id 
+        ]);
     }
 }
