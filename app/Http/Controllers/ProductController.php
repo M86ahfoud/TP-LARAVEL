@@ -20,6 +20,7 @@ class ProductController extends Controller
         return view('produits.index',[
             'produits' => Product::latest()->paginate(6),
             'categories' => Category::all(),
+            'lastproduits' => Product::latest('id')->first(),
 
         ]);
     }
@@ -53,7 +54,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('produits.show', [
+            'product' => $product
+        ]);
     }
 
     /**

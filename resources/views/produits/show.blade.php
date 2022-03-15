@@ -3,11 +3,23 @@
 
 @section('content')
 
-<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    @foreach ($products as $product)
-          
-        @include('partials.movie')
-    @endforeach
+<div class="row">
+    <div class="col-lg-5">
+        <img src="{{ $product->image }}" class="img-fluid" alt="{{ $product->nom }}">
+    </div>
+    <div class="col-lg-7">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1>{{ $product->prix }}</h1>
+                <div class="mb-4">
+                    {{ $product->description }}
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @endsection
