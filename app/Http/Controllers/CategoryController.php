@@ -57,8 +57,9 @@ class CategoryController extends Controller
         return view('categorie.show', [
 
             'category' => $category,
-            'categories' =>Category::inRandomOrder()->limit(5)->get(),
-            'categories' => Category::latest()->paginate(3)
+            'categories' => Category::latest()->paginate(3),
+           'lastproduits' => Product::latest('id')->first(),
+          // $category = Category::all(),
             
         ]);
      

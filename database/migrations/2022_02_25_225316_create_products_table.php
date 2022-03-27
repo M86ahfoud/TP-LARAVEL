@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('liste_couleurs')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->integer('promotion');
-            $table->timestamp('dat_creation')->nullable();
             $table->timestamps();
         });
     }

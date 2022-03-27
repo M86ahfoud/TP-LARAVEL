@@ -11,6 +11,7 @@
     </section>
 
     <div class="row">
+        @include('layouts.sidbar')
         
         <div class="col">
             <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
@@ -35,9 +36,9 @@
                 @endforeach
             </div>
         </div>
-        {!! $categories->links() !!}
+        
     </div>
-    
+    {!! $categories->links() !!}
 @endsection
 
 

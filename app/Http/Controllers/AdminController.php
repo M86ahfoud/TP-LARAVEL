@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
-class ContactController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        
+      return view ('Admin.index');  
     }
 
     /**
@@ -25,7 +23,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.create');
+        //
     }
 
     /**
@@ -36,23 +34,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            //vérifier les erreurs;
-            'nom' => 'required|min:3',
-            'email' => 'email:rfc,dns',
-            'object' => 'required|min:6',
-            'message' => 'required|min:15',
-            
-        ]);
-        $user = ['email' => config('services.contact.mail'), 'name' => Request('nom'), 'message' => Request('message')];
-        // $user->email;
-        Mail::to($user ['email'])->send(new Contact($user));
-
-        return view('contact.index', [
-          'data' => $user
-        ]);
-
-        
+        //
     }
 
     /**
